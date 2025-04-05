@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T Stresser</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="glass-overlay"></div>
+    
+    <header class="glass-effect">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-terminal"></i>
+                T Stresser
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#console" class="nav-link"><i class="fas fa-terminal"></i> Console</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-address-book"></i> Contact</a></li>
+                    <li><a href="#partners" class="nav-link"><i class="fas fa-users"></i> Partners</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="console" class="console-container fade-in glass-effect">
+            <div class="console-header">
+                <div class="console-title">
+                    <i class="fas fa-code"></i>
+                    MrTanjiro
+                </div>
+                <div class="btn-group">
+                    <button id="clear-console" class="console-submit btn-clear">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+            </div>
+            <div id="console-output" class="console-output"></div>
+            <div class="console-input-container">
+                <div class="input-row">
+                    <div class="console-prompt">></div>
+                    <input type="text" id="console-input" class="console-input" placeholder="Ketik perintah disini..." autocomplete="off">
+                </div>
+                <button id="console-submit" class="console-submit">
+                    <i class="fas fa-paper-plane"></i> Kirim
+                </button>
+            </div>
+        </div>
+
+        <div id="contact" class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-address-book"></i> Kontak Saya</h2>
+            <div class="social-links">
+                <a href="https://t.me/mrtanjirox" class="social-link telegram glass-effect">
+                    <i class="fab fa-telegram"></i> 
+                    <span>Telegram: @mrtanjirox</span>
+                </a>
+                <a href="https://wa.me/6281371549376" class="social-link whatsapp glass-effect">
+                    <i class="fab fa-whatsapp"></i> 
+                    <span>WhatsApp: +62 813-7154-9376</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="partners" class="partners section fade-in">
+            <h2 class="section-title"><i class="fas fa-users"></i> Partners</h2>
+            <div class="partner-cards">
+                <div class="partner-card glass-effect">
+                    <div class="card-background"></div>
+                    <img src="https://i.pinimg.com/736x/92/05/74/9205746641774940a15e6cfe8035c064.jpg" alt="Uzzlang" class="partner-image">
+                    <div class="partner-info">
+                        <div class="partner-name">Uzzlang</div>
+                        <div class="partner-age">
+                            <i class="fas fa-user"></i> Umur: 14 tahun
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-card glass-effect">
+                    <div class="card-background"></div>
+                    <img src="https://i.pinimg.com/736x/23/a7/2e/23a72e27e12d3516e78075ca83633be8.jpg" alt="Laichs" class="partner-image">
+                    <div class="partner-info">
+                        <div class="partner-name">Laichs</div>
+                        <div class="partner-age">
+                            <i class="fas fa-user"></i> Umur: 13 tahun
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-card glass-effect">
+                    <div class="card-background"></div>
+                    <img src="https://i.pinimg.com/736x/84/e6/0c/84e60c4a50d3db61efcf5cd3658eb5a1.jpg" alt="Kyialla" class="partner-image">
+                    <div class="partner-info">
+                        <div class="partner-name">Kyialla</div>
+                        <div class="partner-age">
+                            <i class="fas fa-user"></i> Umur: 10 tahun
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="glass-effect">
+        <p>&copy; 2025 T Stresser | All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Particles.js configuration
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Socket.io setup
+            const socket = io();
+            const consoleOutput = document.getElementById('console-output');
+            const consoleInput = document.getElementById('console-input');
+            const consoleSubmit = document.getElementById('console-submit');
+            const clearConsole = document.getElementById('clear-console');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Hide menu when clicking on a menu item
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('show');
+                });
+            });
+            
+            // Function to append output to console
+            function appendToConsole(data) {
+                const outputElement = document.createElement('div');
+                let className = '';
+                
+                switch(data.type) {
+                    case 'stdout':
+                        className = 'text-success';
+                        break;
+                    case 'error':
+                        className = 'text-error';
+                        break;
+                    case 'info':
+                        className = 'text-info';
+                        break;
+                    case 'user':
+                        className = 'text-user';
+                        break;
+                    default:
+                        className = '';
+                }
+                
+                outputElement.className = className;
+                outputElement.textContent = data.message;
+                consoleOutput.appendChild(outputElement);
+                
+                // Auto-scroll to bottom
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+            
+            // Listen for output events from the server
+            socket.on('output', (data) => {
+                appendToConsole(data);
+            });
+            
+            // Handle input submission
+            function submitInput() {
+                const input = consoleInput.value.trim();
+                if (input) {
+                    // Display the input in the console
+                    appendToConsole({
+                        type: 'user',
+                        message: `> ${input}`
+                    });
+                    
+                    // Send the input to the server
+                    socket.emit('input', input);
+                    
+                    // Clear the input field
+                    consoleInput.value = '';
+                }
+            }
+            
+            // Event listeners
+            consoleSubmit.addEventListener('click', submitInput);
+            
+            consoleInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    submitInput();
+                }
+            });
+            
+            clearConsole.addEventListener('click', () => {
+                consoleOutput.innerHTML = '';
+            });
+            
+            // Focus input on page load
+            consoleInput.focus();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Apply fade-in animation to sections when they become visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
